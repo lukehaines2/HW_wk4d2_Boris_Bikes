@@ -2,13 +2,36 @@ require_relative './spec_helper'
 
 describe Van do
 
+  def fill_van van
+    10.times { van.load(Bike.new) }
+  end
+
   let(:van) { Van.new }
+  let(:bike) { Bike.new }
+  let(:station) { DockingStation.new({capacity: 20}) }
 
   it 'It should be built with no bikes in it' do
     expect(van.bike_count).to eq 0
   end
 
+  it 'should be able to load a bike' do
+    van.load(bike)
+    expect(van.bike_count).to eq 1
+  end
 
+  it 'Should be able to unload a bike' do
+    van.load(bike)
+    van.unload(bike)
+    expect(van.bike_count).to eq 0
+  end
+
+
+
+  it 'should not accept a bike if it\'s full' do
+    fill_van van
+
+    expect{van.load(bike)}.to raise_error 'Van is full'
+  end
 
 
 

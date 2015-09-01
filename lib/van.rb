@@ -3,7 +3,7 @@ class Van
   DEFAULT_CAPACITY = 10
 
   def initialize options = {}
-    @capcity = options.fetch(:capacity, DEFAULT_CAPACITY)
+    @capacity = options.fetch(:capacity, DEFAULT_CAPACITY)
     @bikes = []
   end
 
@@ -12,8 +12,18 @@ class Van
     @bikes.count
   end
 
+  def load bike
+    raise 'Van is full' if full?
+    @bikes << bike
+  end
 
+  def unload bike
+    @bikes.delete bike
+  end
 
+  def full?
+    bike_count == @capacity
+  end
 
 
 end
