@@ -15,11 +15,22 @@ describe Garage do
   end
 
   it 'Should unload the broken bikes from van' do
+    garage.unload(bike)
+    expect(van.bike_count).to eq 0
+  end
+
+  it 'Should accept the bike into the garage' do
     garage.accept(bike)
     expect(garage.bike_count).to eq 1
   end
 
+  it 'Fix the bikes at garage' do
+    garage.fix(bike)
+    expect(bike.broken?).to eq false
+  end
+
   it 'Should load the fixed bikes back onto van' do
+    # van.load.broken?
     van.load(bike)
     garage.unload(bike)
     expect(garage.bike_count).to eq 0
@@ -34,6 +45,8 @@ describe Garage do
 
 end
 
+
+# only fixed bikes loaded to van
 # load 
 # unload
 
