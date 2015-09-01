@@ -6,7 +6,7 @@ describe Van do
     10.times { van.load(Bike.new) }
   end
 
-  let(:van) { Van.new }
+  let(:van) { Van.new({capacity: 10}) }
   let(:bike) { Bike.new }
   let(:station) { DockingStation.new({capacity: 20}) }
 
