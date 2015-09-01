@@ -25,5 +25,9 @@ class Van
     bike_count == @capacity
   end
 
+  def available_bikes
+    @bikes.reject { |bike| bike.working? }
+  end
+
 
 end
