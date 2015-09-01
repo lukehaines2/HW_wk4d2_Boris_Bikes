@@ -40,7 +40,7 @@ describe Van do
     expect{van.load(bike)}.to raise_error 'Van is full'
   end
 
-  it 'should provide a list of available bikes' do
+  it 'should only accept broken bikes - from available bikes list' do
     working_bike, broken_bike = Bike.new, Bike.new
     working_bike.break
     station.dock(working_bike)

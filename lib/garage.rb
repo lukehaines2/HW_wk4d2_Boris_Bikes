@@ -4,7 +4,6 @@ class Garage
 
   def initialize options={}
     @capacity = options.fetch(:capacity, DEFAULT_CAPACITY)
-    @broken = true
     @bikes = []
   end 
 
@@ -30,7 +29,7 @@ class Garage
   end
 
   def fix bike
-    @broken = false
+    bike.broken = false
   end
 
 
